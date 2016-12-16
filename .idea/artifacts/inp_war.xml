@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="inp:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="inp-1.0.0-BUILD-SNAPSHOT.war">
+      <element id="artifact" artifact-name="inp:war exploded" />
+    </root>
+  </artifact>
+</component>
