@@ -28,11 +28,11 @@
     
     <bean id="oracleSqlSession"
         class="org.mybatis.spring.SqlSessionTemplate">
-        <constructor-arg  ref="sqlSessionFactory"></constructor-arg>
+        <constructor-arg  ref="sqlSessionFactory"/>
     </bean>
     
     <bean id="guestDao" class="com.hb.inp.model.MyBatisDaoImpl">
-		<property name="sqlSession" ref="oracleSqlSession"></property>
+		<property name="sqlSession" ref="oracleSqlSession"/>
 	</bean>
     
     <!-- mySQL -->
@@ -51,7 +51,7 @@
     
     <bean id="mySqlSession"
         class="org.mybatis.spring.SqlSessionTemplate">
-        <constructor-arg  ref="sqlSessionFactory2"></constructor-arg>
+        <constructor-arg  ref="sqlSessionFactory2"/>
     </bean>
    
 <!-- 	<bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" /> -->
