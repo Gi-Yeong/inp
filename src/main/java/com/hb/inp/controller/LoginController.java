@@ -67,4 +67,13 @@ public class LoginController {
         out.close();
         System.out.println("login success");
     }
+
+    @RequestMapping("/jsontest")
+    public void JsonTest(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("start");
+        String temp = request.getParameter("list_temp");
+
+        System.out.println(temp);
+
+    }
 }
