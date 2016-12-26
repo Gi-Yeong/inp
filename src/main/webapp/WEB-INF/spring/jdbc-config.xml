@@ -35,12 +35,12 @@
 		<property name="sqlSession" ref="oracleSqlSession"/>
 	</bean>
     
-    <!-- mySQL -->
+    <!-- mySQL1 -->
     <bean id="dataSource2" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
-        <property name="driverClass" value="#{jdbc['mysql.driverClass']}"/>
-        <property name="url" value="#{jdbc['mysql.url']}"/>
-        <property name="username" value="#{jdbc['mysql.username']}"/>
-        <property name="password" value="#{jdbc['mysql.password']}"/>
+        <property name="driverClass" value="#{jdbc['mysql1.driverClass']}"/>
+        <property name="url" value="#{jdbc['mysql1.url']}"/>
+        <property name="username" value="#{jdbc['mysql1.username']}"/>
+        <property name="password" value="#{jdbc['mysql1.password']}"/>
     </bean>
     
      <bean id="sqlSessionFactory2"
@@ -52,6 +52,25 @@
     <bean id="mySqlSession"
         class="org.mybatis.spring.SqlSessionTemplate">
         <constructor-arg  ref="sqlSessionFactory2"/>
+    </bean>
+
+    <!-- mySQL2 -->
+    <bean id="dataSource3" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+        <property name="driverClass" value="#{jdbc['mysql2.driverClass']}"/>
+        <property name="url" value="#{jdbc['mysql2.url']}"/>
+        <property name="username" value="#{jdbc['mysql2.username']}"/>
+        <property name="password" value="#{jdbc['mysql2.password']}"/>
+    </bean>
+
+    <bean id="sqlSessionFactory3"
+          class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource3" />
+        <property name="mapperLocations" value="classpath:mybatis_mysql2/*.xml" />
+    </bean>
+
+    <bean id="mySql2Session"
+          class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg  ref="sqlSessionFactory3"/>
     </bean>
    
 <!-- 	<bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" /> -->

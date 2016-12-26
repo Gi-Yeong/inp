@@ -1,6 +1,7 @@
 package com.hb.inp.controller;
 
 import com.hb.inp.model.Login.LoginDao;
+import com.hb.inp.model.MySql.Test_Dao;
 import org.apache.ibatis.session.SqlSession;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,45 @@ public class LoginController {
 
     @Autowired
     private SqlSession oracleSqlSession;
+
+    @Autowired
+    private SqlSession mySqlSession;
+//    mysql_one
+
+    @Autowired
+    private SqlSession mySql2Session;
+//    mysql_two
+
+    @RequestMapping(value = "/dbtest")
+    public void mysql_test(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("DB_TEST");
+        String db_info = request.getParameter("db_infom");
+        String callback = request.getParameter("callback");
+        System.out.println(db_info);
+        PrintWriter out = null;
+        try {
+            out = response.getWriter();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        if (db_info.equals("mysql_one")) {
+            mySqlSession.getMapper(Test_Dao.class).mysql(db_info);
+
+            System.out.println("JSON OBJECT MAKE_DBINFO1");
+            mySqlSession.getMapper(Test_Dao.class).mysql(db_info);
+            out.write(callback + "({\"db_name\" : \"result_one\"})");
+            out.flush();
+            out.close();
+        } else if (db_info.equals("mysql_two")) {
+            mySql2Session.getMapper(Test_Dao.class).mysql(db_info);
+            System.out.println("JSON OBJECT MAKE_DBINFO2");
+            out.write(callback + "({\"db_name\" : \"result_two\"})");
+            out.flush();
+            out.close();
+        }
+    }
 
     @RequestMapping(value = "/memberlogin")
     public void guestLogin(HttpServletRequest request, HttpServletResponse response) {
@@ -71,9 +111,12 @@ public class LoginController {
     @RequestMapping("/jsontest")
     public void JsonTest(HttpServletRequest request, HttpServletResponse response) {
         System.out.println("start");
-        String temp = request.getParameter("list_temp");
+        String count = request.getParameter("count");
+        String msg = request.getParameter("msg");
 
-        System.out.println(temp);
+        System.out.println(count);
+        System.out.println();
+        System.out.println(msg);
 
     }
 }
