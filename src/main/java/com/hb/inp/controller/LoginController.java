@@ -46,7 +46,7 @@ public class LoginController {
 
 
         if (db_info.equals("mysql_one")) {
-            mySqlSession.getMapper(Test_Dao.class).mysql(db_info);
+//            mySqlSession.getMapper(Test_Dao.class).mysql(db_info);
 
             System.out.println("JSON OBJECT MAKE_DBINFO1");
             mySqlSession.getMapper(Test_Dao.class).mysql(db_info);
