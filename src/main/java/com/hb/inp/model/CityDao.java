@@ -9,5 +9,5 @@ public interface CityDao {
 	CityVo selectOne(int ID);
 	void UpdateOne(CityVo bean);
 	void deleteOne(int ID);
-	
+
 }
