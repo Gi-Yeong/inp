@@ -31,8 +31,8 @@ public class JsonController {
 //    mysql_two
 
     //    JM20, JM40 DB에서 데이터 가져오기
-    @RequestMapping(value = "/getjmdata")
-    public void getJsonTest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    @RequestMapping(value = "/getjmdata20")
+    public void getJm20(HttpServletRequest request, HttpServletResponse response) throws Exception {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
         //    DB 선택
@@ -84,46 +84,6 @@ public class JsonController {
             out.flush();
             out.close();
 
-//            JM40 전송 부분
-            System.out.println("DBINFO1_USE_Start_JM40");
-            jsonObject = new HashMap<String, Object>();
-            jsonSubObject = null;
-            jsonList = new ArrayList<Map<String, Object>>();
-            List<Jm40Vo> list40 = mySqlSession.getMapper(Jm40Dao.class).selectAll();
-            callBack = request.getParameter("callback");
-
-            for (Jm40Vo dto : list40) {
-                jsonSubObject = new HashMap<String, Object>();
-                jsonSubObject.put("code", dto.getCode());
-                jsonSubObject.put("title1", dto.getTitle1());
-                jsonSubObject.put("bbigo", dto.getBbigo());
-                jsonSubObject.put("tel1", dto.getTel1());
-                jsonSubObject.put("address", dto.getAddress());
-                jsonSubObject.put("number", dto.getNumber());
-                jsonSubObject.put("name", dto.getName());
-                jsonSubObject.put("gubun", dto.getGubun());
-                jsonSubObject.put("lastdan", dto.getLastdan());
-                jsonSubObject.put("moneyay", dto.getMoneay());
-                jsonList.add(jsonSubObject);
-            }
-            jsonObject.put("success", true);
-            jsonObject.put("total_count", list.size());
-            jsonObject.put("result_list_jm40", jsonList);
-            System.out.println(jsonList.toString());
-
-            result = null;
-            ObjectMapper mapper_jm40 = new ObjectMapper();
-            try {
-                result = mapper_jm40.writeValueAsString(jsonObject);
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-            out = response.getWriter();
-            System.out.println(callBack + "(" + result + ")");
-            out.write(callBack + "(" + result + ")");
-            out.flush();
-            out.close();
-
         } else if (db_info.equals("mysql_two")) {
             //            JM20 전송 부분
 
@@ -166,16 +126,31 @@ public class JsonController {
             out.write(callBack + "(" + result + ")");
             out.flush();
             out.close();
+        }
+    }
 
-            //            JM40 전송 부분
-            System.out.println("DBINFO2_USE_Start_JM40");
-            jsonObject = new HashMap<String, Object>();
-            jsonSubObject = null;
-            jsonList = new ArrayList<Map<String, Object>>();
-            List<Jm40Vo> list40 = mySql2Session.getMapper(Jm40Dao.class).selectAll();
-            callBack = request.getParameter("callback");
+    @RequestMapping(value = "/getjmdata40")
+    public void getJm40(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
+        //    DB 선택
+        System.out.println("DB_선택");
+        String db_info = request.getParameter("db_infom");
+//        String callback = request.getParameter("callback");
+        System.out.println(db_info);
+        PrintWriter out = null;
 
-            for (Jm40Vo dto : list40) {
+        if (db_info.equals("mysql_one")) {
+            System.out.println("DBINFO1_USE_Start_JM40");
+            Map<String, Object> jsonObject = new HashMap<String, Object>();
+            Map<String, Object> jsonSubObject = null;
+            ArrayList<Map<String, Object>> jsonList = new ArrayList<Map<String, Object>>();
+            String callBack = request.getParameter("callback");
+            String result = null;
+//            JM40 전송 부분
+            List<Jm40Vo> list = mySqlSession.getMapper(Jm40Dao.class).selectAll();
+
+            for (Jm40Vo dto : list) {
                 jsonSubObject = new HashMap<String, Object>();
                 jsonSubObject.put("code", dto.getCode());
                 jsonSubObject.put("title1", dto.getTitle1());
@@ -194,7 +169,47 @@ public class JsonController {
             jsonObject.put("result_list_jm40", jsonList);
             System.out.println(jsonList.toString());
 
-            result = null;
+            ObjectMapper mapper_jm40 = new ObjectMapper();
+            try {
+                result = mapper_jm40.writeValueAsString(jsonObject);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            out = response.getWriter();
+            System.out.println(callBack + "(" + result + ")");
+            out.write(callBack + "(" + result + ")");
+            out.flush();
+            out.close();
+
+        } else if (db_info.equals("mysql_two")) {
+            System.out.println("DBINFO2_USE_Start_JM20");
+            Map<String, Object> jsonObject = new HashMap<String, Object>();
+            Map<String, Object> jsonSubObject = null;
+            ArrayList<Map<String, Object>> jsonList = new ArrayList<Map<String, Object>>();
+            List<Jm40Vo> list = mySql2Session.getMapper(Jm40Dao.class).selectAll();
+            String callBack = request.getParameter("callback");
+            String result = null;
+            //            JM40 전송 부분
+            System.out.println("DBINFO2_USE_Start_JM40");
+            for (Jm40Vo dto : list) {
+                jsonSubObject = new HashMap<String, Object>();
+                jsonSubObject.put("code", dto.getCode());
+                jsonSubObject.put("title1", dto.getTitle1());
+                jsonSubObject.put("bbigo", dto.getBbigo());
+                jsonSubObject.put("tel1", dto.getTel1());
+                jsonSubObject.put("address", dto.getAddress());
+                jsonSubObject.put("number", dto.getNumber());
+                jsonSubObject.put("name", dto.getName());
+                jsonSubObject.put("gubun", dto.getGubun());
+                jsonSubObject.put("lastdan", dto.getLastdan());
+                jsonSubObject.put("moneyay", dto.getMoneay());
+                jsonList.add(jsonSubObject);
+            }
+            jsonObject.put("success", true);
+            jsonObject.put("total_count", list.size());
+            jsonObject.put("result_list_jm40", jsonList);
+            System.out.println(jsonList.toString());
+
             ObjectMapper mapper_jm40 = new ObjectMapper();
             try {
                 result = mapper_jm40.writeValueAsString(jsonObject);
@@ -209,9 +224,10 @@ public class JsonController {
         }
     }
 
+
     //    VM71, VM70 저장
-    @RequestMapping(value = "/putvmdata")
-    public void sendJson(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    @RequestMapping(value = "/putvmdata70")
+    public void putVm70(HttpServletRequest request, HttpServletResponse response) throws Exception {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
 
@@ -228,15 +244,11 @@ public class JsonController {
             System.out.println(request.getParameter("arrayVm70"));
             String jsonArrayVm70 = request.getParameter("arrayVm70");
             System.out.println(request.getParameter("arrayVm71"));
-            String jsonArrayVm71 = request.getParameter("arrayVm71");
             String stringInfo70 = " { \"param1\" : " + jsonArrayVm70 + " } ";
-            String stringInfo71 = " { \"param2\" : " + jsonArrayVm71 + " } ";
             JSONParser jsonParser = new JSONParser();
             JSONObject jsonObject70 = (JSONObject) jsonParser.parse(stringInfo70);
-            JSONObject jsonObject71 = (JSONObject) jsonParser.parse(stringInfo71);
 
             JSONArray paramInfoArray70 = (JSONArray) jsonObject70.get("param1");
-            JSONArray paramInfoArray71 = (JSONArray) jsonObject71.get("param2");
             for (int i = 0; i < paramInfoArray70.size(); i++) {
                 Vm70Vo dto = null;
                 JSONObject paramObj = (JSONObject) paramInfoArray70.get(i);
@@ -256,9 +268,66 @@ public class JsonController {
                 dto.setJ_money5((Integer) paramObj.get("j_money5"));
                 dto.setJ_money6((Integer) paramObj.get("j_money6"));
                 mySqlSession.getMapper(Vm70Dao.class).insertVm70(dto);
-                System.out.println("NO:" + i);
+                System.out.println("DBINFO1_USE_Start_VM70 _ NO:" + i);
             }
 
+        } else if (db_info.equals("mysql_two")) {
+//            VM70 전송 부분
+            System.out.println("DBINFO2_USE_Start_VM70");
+            ObjectMapper mapper = new ObjectMapper();
+            System.out.println(request.getParameter("arrayVm70"));
+            String jsonArrayVm70 = request.getParameter("arrayVm70");
+            System.out.println(request.getParameter("arrayVm71"));
+            String stringInfo70 = " { \"param1\" : " + jsonArrayVm70 + " } ";
+            JSONParser jsonParser = new JSONParser();
+            JSONObject jsonObject70 = (JSONObject) jsonParser.parse(stringInfo70);
+
+            JSONArray paramInfoArray70 = (JSONArray) jsonObject70.get("param1");
+            for (int i = 0; i < paramInfoArray70.size(); i++) {
+                Vm70Vo dto = null;
+                JSONObject paramObj = (JSONObject) paramInfoArray70.get(i);
+                dto.setJ_number((String) paramObj.get("j_number"));
+                dto.setJ_code((String) paramObj.get("j_code"));
+                dto.setJ_title((String) paramObj.get("j_title"));
+                dto.setJ_schk((String) paramObj.get("j_schk"));
+                dto.setJ_date((String) paramObj.get("j_date"));
+                dto.setJ_time((String) paramObj.get("j_time"));
+                dto.setJ_memo1((String) paramObj.get("j_momo1"));
+                dto.setJ_no((Integer) paramObj.get("j_no"));
+                dto.setJ_gubun((Integer) paramObj.get("j_gubun"));
+                dto.setJ_money1((Integer) paramObj.get("j_money1"));
+                dto.setJ_money2((Integer) paramObj.get("j_money2"));
+                dto.setJ_money3((Integer) paramObj.get("j_money3"));
+                dto.setJ_money4((Integer) paramObj.get("j_money4"));
+                dto.setJ_money5((Integer) paramObj.get("j_money5"));
+                dto.setJ_money6((Integer) paramObj.get("j_money6"));
+                mySql2Session.getMapper(Vm70Dao.class).insertVm70(dto);
+                System.out.println("DBINFO2_USE_Start_VM70 _ NO:" + i);
+            }
+        }
+    }
+
+    @RequestMapping(value = "/putvmdata71")
+    public void putVm71(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
+
+        System.out.println("DB_선택");
+        String db_info = request.getParameter("db_infom");
+//        String callback = request.getParameter("callback");
+        System.out.println(db_info);
+        PrintWriter out = null;
+//
+        if (db_info.equals("mysql_one")) {
+            ObjectMapper mapper = new ObjectMapper();
+            System.out.println(request.getParameter("arrayVm70"));
+            System.out.println(request.getParameter("arrayVm71"));
+            String jsonArrayVm71 = request.getParameter("arrayVm71");
+            String stringInfo71 = " { \"param2\" : " + jsonArrayVm71 + " } ";
+            JSONParser jsonParser = new JSONParser();
+            JSONObject jsonObject71 = (JSONObject) jsonParser.parse(stringInfo71);
+
+            JSONArray paramInfoArray71 = (JSONArray) jsonObject71.get("param2");
 //            VM71 전송 부분
             System.out.println("DBINFO1_USE_Start_VM71");
             for (int i = 0; i < paramInfoArray71.size(); i++) {
@@ -281,7 +350,7 @@ public class JsonController {
                 dto.setS_money3((Integer) paramObj.get("s_money3"));
                 dto.setS_jbcode1((String) paramObj.get("s_jbcode1"));
                 mySqlSession.getMapper(Vm71Dao.class).insertVm71(dto);
-                System.out.println("NO:" + i);
+                System.out.println("DBINFO1_USE_Start_VM71 _ NO:" + i);
             }
             String callBack = request.getParameter("callback");
 
@@ -290,42 +359,15 @@ public class JsonController {
             out.flush();
             out.close();
         } else if (db_info.equals("mysql_two")) {
-//            VM70 전송 부분
-            System.out.println("DBINFO2_USE_Start_VM70");
             ObjectMapper mapper = new ObjectMapper();
             System.out.println(request.getParameter("arrayVm70"));
-            String jsonArrayVm70 = request.getParameter("arrayVm70");
             System.out.println(request.getParameter("arrayVm71"));
             String jsonArrayVm71 = request.getParameter("arrayVm71");
-            String stringInfo70 = " { \"param1\" : " + jsonArrayVm70 + " } ";
             String stringInfo71 = " { \"param2\" : " + jsonArrayVm71 + " } ";
             JSONParser jsonParser = new JSONParser();
-            JSONObject jsonObject70 = (JSONObject) jsonParser.parse(stringInfo70);
             JSONObject jsonObject71 = (JSONObject) jsonParser.parse(stringInfo71);
 
-            JSONArray paramInfoArray70 = (JSONArray) jsonObject70.get("param1");
             JSONArray paramInfoArray71 = (JSONArray) jsonObject71.get("param2");
-            for (int i = 0; i < paramInfoArray70.size(); i++) {
-                Vm70Vo dto = null;
-                JSONObject paramObj = (JSONObject) paramInfoArray70.get(i);
-                dto.setJ_number((String) paramObj.get("j_number"));
-                dto.setJ_code((String) paramObj.get("j_code"));
-                dto.setJ_title((String) paramObj.get("j_title"));
-                dto.setJ_schk((String) paramObj.get("j_schk"));
-                dto.setJ_date((String) paramObj.get("j_date"));
-                dto.setJ_time((String) paramObj.get("j_time"));
-                dto.setJ_memo1((String) paramObj.get("j_momo1"));
-                dto.setJ_no((Integer) paramObj.get("j_no"));
-                dto.setJ_gubun((Integer) paramObj.get("j_gubun"));
-                dto.setJ_money1((Integer) paramObj.get("j_money1"));
-                dto.setJ_money2((Integer) paramObj.get("j_money2"));
-                dto.setJ_money3((Integer) paramObj.get("j_money3"));
-                dto.setJ_money4((Integer) paramObj.get("j_money4"));
-                dto.setJ_money5((Integer) paramObj.get("j_money5"));
-                dto.setJ_money6((Integer) paramObj.get("j_money6"));
-                mySql2Session.getMapper(Vm70Dao.class).insertVm70(dto);
-                System.out.println("NO:" + i);
-            }
 //            VM71 전송 부분
             System.out.println("DBINFO2_USE_Start_VM71");
             for (int i = 0; i < paramInfoArray71.size(); i++) {
@@ -348,7 +390,7 @@ public class JsonController {
                 dto.setS_money3((Integer) paramObj.get("s_money3"));
                 dto.setS_jbcode1((String) paramObj.get("s_jbcode1"));
                 mySql2Session.getMapper(Vm71Dao.class).insertVm71(dto);
-                System.out.println("NO:" + i);
+                System.out.println("DBINFO2_USE_Start_VM71 _ NO:" + i);
             }
             String callBack = request.getParameter("callback");
 

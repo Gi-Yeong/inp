@@ -79,11 +79,12 @@ public class LoginController {
 
         String db_info = oracleSqlSession.getMapper(LoginDao.class).logincheck(id, pw);
 
+        String callBack = request.getParameter("callback");
+
         System.out.println("JSON OBJECT MAKE");
         Map<String, Object> jsonObject = new HashMap<String, Object>();
         Map<String, Object> jsonSubObject = null;
         ArrayList<Map<String, Object>> jsonList = new ArrayList<Map<String, Object>>();
-        String callBack = request.getParameter("callback");
 
         jsonSubObject = new HashMap<String, Object>();
         jsonSubObject.put("db_key_from_Oracle", db_info);
