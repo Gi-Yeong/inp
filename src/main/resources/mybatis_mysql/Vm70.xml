@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hb.inp.model.MySql.Vm70Dao">
+    <insert id="insertVm70" parameterType="com.hb.inp.model.MySql.Vm70Vo">
+        INSERT INTO vm70 VALUES
+            (#{j_number}, #{j_code}, #{j_title}, #{j_schk}, #{j_date}, #{j_time}, #{j_memo1}, #{j_no}, #{j_gubun},
+                          #{jmoney1}, #{jmoney2}, #{jmoney3}, #{jmoney4}, #{jmoney5}, #{jmoney6});
+    </insert>
+</mapper>
