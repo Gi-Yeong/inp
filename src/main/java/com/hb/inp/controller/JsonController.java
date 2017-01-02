@@ -244,7 +244,7 @@ public class JsonController {
             System.out.println(request.getParameter("arrayVm70"));
             String jsonArrayVm70 = request.getParameter("arrayVm70");
             System.out.println(request.getParameter("arrayVm70"));
-            String stringInfo70 = " { \"param1\" : " + jsonArrayVm70 + " } ";
+            String stringInfo70 = "{\"param1\" : " + jsonArrayVm70 + " }";
             JSONParser jsonParser = new JSONParser();
             JSONObject jsonObject70 = (JSONObject) jsonParser.parse(stringInfo70);
 
@@ -258,9 +258,9 @@ public class JsonController {
                 dto.setJ_schk((String) paramObj.get("j_schk"));
                 dto.setJ_date((String) paramObj.get("j_date"));
                 dto.setJ_time((String) paramObj.get("j_time"));
-                dto.setJ_memo1((String) paramObj.get("j_momo1"));
+                dto.setJ_memo1((String) paramObj.get("j_memo1"));
                 dto.setJ_no((Integer) paramObj.get("j_no"));
-                dto.setJ_gubun((Integer) paramObj.get("j_gubun"));
+                dto.setJ_gunsu((Integer) paramObj.get("j_gunsu"));
                 dto.setJ_money1((Integer) paramObj.get("j_money1"));
                 dto.setJ_money2((Integer) paramObj.get("j_money2"));
                 dto.setJ_money3((Integer) paramObj.get("j_money3"));
@@ -269,6 +269,12 @@ public class JsonController {
                 dto.setJ_money6((Integer) paramObj.get("j_money6"));
                 mySqlSession.getMapper(Vm70Dao.class).insertVm70(dto);
                 System.out.println("DBINFO1_USE_Start_VM70 _ NO:" + i);
+//                String callBack = request.getParameter("callback");
+//
+//                out = response.getWriter();
+//                out.write(callBack + "({\"ok\" : \"oksuccess\"})");
+//                out.flush();
+//                out.close();
             }
 
         } else if (db_info.equals("mysql_two")) {
@@ -292,9 +298,9 @@ public class JsonController {
                 dto.setJ_schk((String) paramObj.get("j_schk"));
                 dto.setJ_date((String) paramObj.get("j_date"));
                 dto.setJ_time((String) paramObj.get("j_time"));
-                dto.setJ_memo1((String) paramObj.get("j_momo1"));
+                dto.setJ_memo1((String) paramObj.get("j_memo1"));
                 dto.setJ_no((Integer) paramObj.get("j_no"));
-                dto.setJ_gubun((Integer) paramObj.get("j_gubun"));
+                dto.setJ_gunsu((Integer) paramObj.get("j_gunsu"));
                 dto.setJ_money1((Integer) paramObj.get("j_money1"));
                 dto.setJ_money2((Integer) paramObj.get("j_money2"));
                 dto.setJ_money3((Integer) paramObj.get("j_money3"));
@@ -303,6 +309,12 @@ public class JsonController {
                 dto.setJ_money6((Integer) paramObj.get("j_money6"));
                 mySql2Session.getMapper(Vm70Dao.class).insertVm70(dto);
                 System.out.println("DBINFO2_USE_Start_VM70 _ NO:" + i);
+//                String callBack = request.getParameter("callback");
+//
+//                out = response.getWriter();
+//                out.write(callBack + "({\"ok\" : \"oksuccess\"})");
+//                out.flush();
+//                out.close();
             }
         }
     }
@@ -351,12 +363,12 @@ public class JsonController {
                 mySqlSession.getMapper(Vm71Dao.class).insertVm71(dto);
                 System.out.println("DBINFO1_USE_Start_VM71 _ NO:" + i);
             }
-            String callBack = request.getParameter("callback");
-
-            out = response.getWriter();
-            out.write(callBack + "({\"ok\" : \"oksuccess\"})");
-            out.flush();
-            out.close();
+//            String callBack = request.getParameter("callback");
+//
+//            out = response.getWriter();
+//            out.write(callBack + "({\"ok\" : \"oksuccess\"})");
+//            out.flush();
+//            out.close();
         } else if (db_info.equals("mysql_two")) {
             ObjectMapper mapper = new ObjectMapper();
             System.out.println(request.getParameter("arrayVm71"));
@@ -390,12 +402,12 @@ public class JsonController {
                 mySql2Session.getMapper(Vm71Dao.class).insertVm71(dto);
                 System.out.println("DBINFO2_USE_Start_VM71 _ NO:" + i);
             }
-            String callBack = request.getParameter("callback");
-
-            out = response.getWriter();
-            out.write(callBack + "({\"ok\" : \"oksuccess\"})");
-            out.flush();
-            out.close();
+//            String callBack = request.getParameter("callback");
+//
+//            out = response.getWriter();
+//            out.write(callBack + "({\"ok\" : \"oksuccess\"})");
+//            out.flush();
+//            out.close();
         }
     }
 }

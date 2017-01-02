@@ -5,7 +5,7 @@
 <mapper namespace="com.hb.inp.model.MySql.Vm70Dao">
     <insert id="insertVm70" parameterType="com.hb.inp.model.MySql.Vm70Vo">
         INSERT INTO vm70 VALUES
-            (#{j_number}, #{j_code}, #{j_title}, #{j_schk}, #{j_date}, #{j_time}, #{j_memo1}, #{j_no}, #{j_gubun},
-                          #{jmoney1}, #{jmoney2}, #{jmoney3}, #{jmoney4}, #{jmoney5}, #{jmoney6});
+            (#{j_number}, #{j_code}, #{j_title}, #{j_schk}, #{j_date}, #{j_time}, #{j_memo1}, #{j_no}, #{j_gunsu},
+                          #{j_money1}, #{j_money2}, #{j_money3}, #{j_money4}, #{j_money5}, #{j_money6});
     </insert>
 </mapper>

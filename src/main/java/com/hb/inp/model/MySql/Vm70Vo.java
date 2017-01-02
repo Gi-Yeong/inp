@@ -10,7 +10,7 @@ public class Vm70Vo {
     String j_time;
     String j_memo1;
     int j_no;
-    int j_gubun;
+    int j_gunsu;
     int j_money1;
     int j_money2;
     int j_money3;
@@ -21,7 +21,7 @@ public class Vm70Vo {
     public Vm70Vo() {
     }
 
-    public Vm70Vo(String j_number, String j_code, String j_title, String j_schk, String j_date, String j_time, String j_memo1, int j_no, int j_gubun, int j_money1, int j_money2, int j_money3, int j_money4, int j_money5, int j_money6) {
+    public Vm70Vo(String j_number, String j_code, String j_title, String j_schk, String j_date, String j_time, String j_memo1, int j_no, int j_gunsu, int j_money1, int j_money2, int j_money3, int j_money4, int j_money5, int j_money6) {
         this.j_number = j_number;
         this.j_code = j_code;
         this.j_title = j_title;
@@ -30,7 +30,7 @@ public class Vm70Vo {
         this.j_time = j_time;
         this.j_memo1 = j_memo1;
         this.j_no = j_no;
-        this.j_gubun = j_gubun;
+        this.j_gunsu = j_gunsu;
         this.j_money1 = j_money1;
         this.j_money2 = j_money2;
         this.j_money3 = j_money3;
@@ -50,7 +50,7 @@ public class Vm70Vo {
                 ", j_time='" + j_time + '\'' +
                 ", j_memo1='" + j_memo1 + '\'' +
                 ", j_no=" + j_no +
-                ", j_gubun=" + j_gubun +
+                ", j_gunsu=" + j_gunsu +
                 ", j_money1=" + j_money1 +
                 ", j_money2=" + j_money2 +
                 ", j_money3=" + j_money3 +
@@ -124,12 +124,12 @@ public class Vm70Vo {
         this.j_no = j_no;
     }
 
-    public int getJ_gubun() {
-        return j_gubun;
+    public int getJ_gunsu() {
+        return j_gunsu;
     }
 
-    public void setJ_gubun(int j_gubun) {
-        this.j_gubun = j_gubun;
+    public void setJ_gunsu(int j_gunsu) {
+        this.j_gunsu = j_gunsu;
     }
 
     public int getJ_money1() {
