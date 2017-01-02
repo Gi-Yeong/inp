@@ -113,6 +113,9 @@ public class Vm70Vo {
     }
 
     public void setJ_memo1(String j_memo1) {
+        if (j_memo1.equals("") || j_memo1.isEmpty()) {
+            j_memo1 = ".";
+        }
         this.j_memo1 = j_memo1;
     }
 

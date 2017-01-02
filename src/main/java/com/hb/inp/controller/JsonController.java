@@ -249,32 +249,49 @@ public class JsonController {
             JSONObject jsonObject70 = (JSONObject) jsonParser.parse(stringInfo70);
 
             JSONArray paramInfoArray70 = (JSONArray) jsonObject70.get("param1");
+            Vm70Vo dto;
             for (int i = 0; i < paramInfoArray70.size(); i++) {
-                Vm70Vo dto = null;
+                System.out.println(paramInfoArray70.size());
+                dto = new Vm70Vo();
                 JSONObject paramObj = (JSONObject) paramInfoArray70.get(i);
                 dto.setJ_number((String) paramObj.get("j_number"));
+                System.out.println((String) paramObj.get("j_number"));
                 dto.setJ_code((String) paramObj.get("j_code"));
+                System.out.println((String) paramObj.get("j_code"));
                 dto.setJ_title((String) paramObj.get("j_title"));
+                System.out.println((String) paramObj.get("j_title"));
                 dto.setJ_schk((String) paramObj.get("j_schk"));
+                System.out.println((String) paramObj.get("j_schk"));
                 dto.setJ_date((String) paramObj.get("j_date"));
+                System.out.println((String) paramObj.get("j_date"));
                 dto.setJ_time((String) paramObj.get("j_time"));
+                System.out.println((String) paramObj.get("j_time"));
                 dto.setJ_memo1((String) paramObj.get("j_memo1"));
-                dto.setJ_no((Integer) paramObj.get("j_no"));
-                dto.setJ_gunsu((Integer) paramObj.get("j_gunsu"));
-                dto.setJ_money1((Integer) paramObj.get("j_money1"));
-                dto.setJ_money2((Integer) paramObj.get("j_money2"));
-                dto.setJ_money3((Integer) paramObj.get("j_money3"));
-                dto.setJ_money4((Integer) paramObj.get("j_money4"));
-                dto.setJ_money5((Integer) paramObj.get("j_money5"));
-                dto.setJ_money6((Integer) paramObj.get("j_money6"));
+                System.out.println((String) paramObj.get("j_memo1"));
+                dto.setJ_no(Integer.parseInt((String) paramObj.get("j_no")));
+                System.out.println(Integer.parseInt((String) paramObj.get("j_no")));
+                dto.setJ_gunsu(Integer.parseInt((String) paramObj.get("j_gunsu")));
+                System.out.println(Integer.parseInt((String) paramObj.get("j_gunsu")));
+                dto.setJ_money1(Integer.parseInt((String) paramObj.get("j_money1")));
+                System.out.println(Integer.parseInt((String) paramObj.get("j_money1")));
+                dto.setJ_money2(Integer.parseInt((String) paramObj.get("j_money2")));
+                System.out.println(Integer.parseInt((String) paramObj.get("j_money2")));
+                dto.setJ_money3(Integer.parseInt((String) paramObj.get("j_money3")));
+                System.out.println(Integer.parseInt((String) paramObj.get("j_money3")));
+                dto.setJ_money4(Integer.parseInt((String) paramObj.get("j_money4")));
+                System.out.println(Integer.parseInt((String) paramObj.get("j_money4")));
+                dto.setJ_money5(Integer.parseInt((String) paramObj.get("j_money5")));
+                System.out.println(Integer.parseInt((String) paramObj.get("j_money5")));
+                dto.setJ_money6(Integer.parseInt((String) paramObj.get("j_money6")));
+                System.out.println(Integer.parseInt((String) paramObj.get("j_money6")));
                 mySqlSession.getMapper(Vm70Dao.class).insertVm70(dto);
                 System.out.println("DBINFO1_USE_Start_VM70 _ NO:" + i);
-//                String callBack = request.getParameter("callback");
-//
-//                out = response.getWriter();
-//                out.write(callBack + "({\"ok\" : \"oksuccess\"})");
-//                out.flush();
-//                out.close();
+                String callBack = request.getParameter("callback");
+
+                out = response.getWriter();
+                out.write(callBack + "({\"ok\" : \"oksuccess\"})");
+                out.flush();
+                out.close();
             }
 
         } else if (db_info.equals("mysql_two")) {
@@ -288,33 +305,49 @@ public class JsonController {
             JSONParser jsonParser = new JSONParser();
             JSONObject jsonObject70 = (JSONObject) jsonParser.parse(stringInfo70);
 
+            Vm70Vo dto;
             JSONArray paramInfoArray70 = (JSONArray) jsonObject70.get("param1");
             for (int i = 0; i < paramInfoArray70.size(); i++) {
-                Vm70Vo dto = null;
+                dto = new Vm70Vo();
                 JSONObject paramObj = (JSONObject) paramInfoArray70.get(i);
                 dto.setJ_number((String) paramObj.get("j_number"));
+                System.out.println((String) paramObj.get("j_number"));
                 dto.setJ_code((String) paramObj.get("j_code"));
+                System.out.println((String) paramObj.get("j_code"));
                 dto.setJ_title((String) paramObj.get("j_title"));
+                System.out.println((String) paramObj.get("j_title"));
                 dto.setJ_schk((String) paramObj.get("j_schk"));
+                System.out.println((String) paramObj.get("j_schk"));
                 dto.setJ_date((String) paramObj.get("j_date"));
+                System.out.println((String) paramObj.get("j_date"));
                 dto.setJ_time((String) paramObj.get("j_time"));
+                System.out.println((String) paramObj.get("j_time"));
                 dto.setJ_memo1((String) paramObj.get("j_memo1"));
-                dto.setJ_no((Integer) paramObj.get("j_no"));
-                dto.setJ_gunsu((Integer) paramObj.get("j_gunsu"));
-                dto.setJ_money1((Integer) paramObj.get("j_money1"));
-                dto.setJ_money2((Integer) paramObj.get("j_money2"));
-                dto.setJ_money3((Integer) paramObj.get("j_money3"));
-                dto.setJ_money4((Integer) paramObj.get("j_money4"));
-                dto.setJ_money5((Integer) paramObj.get("j_money5"));
-                dto.setJ_money6((Integer) paramObj.get("j_money6"));
+                System.out.println((String) paramObj.get("j_memo1"));
+                dto.setJ_no(Integer.parseInt((String) paramObj.get("j_no")));
+                System.out.println(Integer.parseInt((String) paramObj.get("j_no")));
+                dto.setJ_gunsu(Integer.parseInt((String) paramObj.get("j_gunsu")));
+                System.out.println(Integer.parseInt((String) paramObj.get("j_gunsu")));
+                dto.setJ_money1(Integer.parseInt((String) paramObj.get("j_money1")));
+                System.out.println(Integer.parseInt((String) paramObj.get("j_money1")));
+                dto.setJ_money2(Integer.parseInt((String) paramObj.get("j_money2")));
+                System.out.println(Integer.parseInt((String) paramObj.get("j_money2")));
+                dto.setJ_money3(Integer.parseInt((String) paramObj.get("j_money3")));
+                System.out.println(Integer.parseInt((String) paramObj.get("j_money3")));
+                dto.setJ_money4(Integer.parseInt((String) paramObj.get("j_money4")));
+                System.out.println(Integer.parseInt((String) paramObj.get("j_money4")));
+                dto.setJ_money5(Integer.parseInt((String) paramObj.get("j_money5")));
+                System.out.println(Integer.parseInt((String) paramObj.get("j_money5")));
+                dto.setJ_money6(Integer.parseInt((String) paramObj.get("j_money6")));
+                System.out.println(Integer.parseInt((String) paramObj.get("j_money6")));
                 mySql2Session.getMapper(Vm70Dao.class).insertVm70(dto);
                 System.out.println("DBINFO2_USE_Start_VM70 _ NO:" + i);
-//                String callBack = request.getParameter("callback");
-//
-//                out = response.getWriter();
-//                out.write(callBack + "({\"ok\" : \"oksuccess\"})");
-//                out.flush();
-//                out.close();
+                String callBack = request.getParameter("callback");
+
+                out = response.getWriter();
+                out.write(callBack + "({\"ok\" : \"oksuccess\"})");
+                out.flush();
+                out.close();
             }
         }
     }
@@ -340,35 +373,36 @@ public class JsonController {
 
             JSONArray paramInfoArray71 = (JSONArray) jsonObject71.get("param2");
 //            VM71 전송 부분
+            Vm71Vo dto;
             System.out.println("DBINFO1_USE_Start_VM71");
             for (int i = 0; i < paramInfoArray71.size(); i++) {
-                Vm71Vo dto = null;
+                dto = new Vm71Vo();
                 JSONObject paramObj = (JSONObject) paramInfoArray71.get(i);
                 dto.setS_number((String) paramObj.get("s_number"));
-                dto.setS_jno((Integer) paramObj.get("s_jno"));
+                dto.setS_jno(Integer.parseInt((String) paramObj.get("s_jno")));
                 dto.setS_jcode((String) paramObj.get("s_jcode"));
                 dto.setS_jname((String) paramObj.get("s_jname"));
                 dto.setS_jwxt((String) paramObj.get("s_jwxt"));
-                dto.setS_jea((Integer) paramObj.get("s_jea"));
+                dto.setS_jea(Integer.parseInt((String) paramObj.get("s_jea")));
                 dto.setS_jchk((String) paramObj.get("s_jchk"));
-                dto.setS_jsur1((Integer) paramObj.get("s_jsur1"));
-                dto.setS_box((Integer) paramObj.get("s_box"));
-                dto.setS_ea((Integer) paramObj.get("s_ea"));
-                dto.setS_jdan1((Integer) paramObj.get("s_jdan1"));
-                dto.setS_jdan2((Integer) paramObj.get("s_jdan2"));
-                dto.setS_money1((Integer) paramObj.get("s_money1"));
-                dto.setS_money2((Integer) paramObj.get("s_money2"));
-                dto.setS_money3((Integer) paramObj.get("s_money3"));
+                dto.setS_jsur1(Integer.parseInt((String) paramObj.get("s_jsur1")));
+                dto.setS_box(Integer.parseInt((String) paramObj.get("s_box")));
+                dto.setS_ea(Integer.parseInt((String) paramObj.get("s_ea")));
+                dto.setS_jdan1(Integer.parseInt((String) paramObj.get("s_jdan1")));
+                dto.setS_jdan2(Integer.parseInt((String) paramObj.get("s_jdan2")));
+                dto.setS_money1(Integer.parseInt((String) paramObj.get("s_money1")));
+                dto.setS_money2(Integer.parseInt((String) paramObj.get("s_money2")));
+                dto.setS_money3(Integer.parseInt((String) paramObj.get("s_money3")));
                 dto.setS_jbcode1((String) paramObj.get("s_jbcode1"));
                 mySqlSession.getMapper(Vm71Dao.class).insertVm71(dto);
                 System.out.println("DBINFO1_USE_Start_VM71 _ NO:" + i);
             }
-//            String callBack = request.getParameter("callback");
-//
-//            out = response.getWriter();
-//            out.write(callBack + "({\"ok\" : \"oksuccess\"})");
-//            out.flush();
-//            out.close();
+            String callBack = request.getParameter("callback");
+
+            out = response.getWriter();
+            out.write(callBack + "({\"ok\" : \"oksuccess\"})");
+            out.flush();
+            out.close();
         } else if (db_info.equals("mysql_two")) {
             ObjectMapper mapper = new ObjectMapper();
             System.out.println(request.getParameter("arrayVm71"));
@@ -379,35 +413,36 @@ public class JsonController {
 
             JSONArray paramInfoArray71 = (JSONArray) jsonObject71.get("param2");
 //            VM71 전송 부분
+            Vm71Vo dto;
             System.out.println("DBINFO2_USE_Start_VM71");
             for (int i = 0; i < paramInfoArray71.size(); i++) {
-                Vm71Vo dto = null;
+                dto = new Vm71Vo();
                 JSONObject paramObj = (JSONObject) paramInfoArray71.get(i);
                 dto.setS_number((String) paramObj.get("s_number"));
-                dto.setS_jno((Integer) paramObj.get("s_jno"));
+                dto.setS_jno(Integer.parseInt((String) paramObj.get("s_jno")));
                 dto.setS_jcode((String) paramObj.get("s_jcode"));
                 dto.setS_jname((String) paramObj.get("s_jname"));
                 dto.setS_jwxt((String) paramObj.get("s_jwxt"));
-                dto.setS_jea((Integer) paramObj.get("s_jea"));
+                dto.setS_jea(Integer.parseInt((String) paramObj.get("s_jea")));
                 dto.setS_jchk((String) paramObj.get("s_jchk"));
-                dto.setS_jsur1((Integer) paramObj.get("s_jsur1"));
-                dto.setS_box((Integer) paramObj.get("s_box"));
-                dto.setS_ea((Integer) paramObj.get("s_ea"));
-                dto.setS_jdan1((Integer) paramObj.get("s_jdan1"));
-                dto.setS_jdan2((Integer) paramObj.get("s_jdan2"));
-                dto.setS_money1((Integer) paramObj.get("s_money1"));
-                dto.setS_money2((Integer) paramObj.get("s_money2"));
-                dto.setS_money3((Integer) paramObj.get("s_money3"));
+                dto.setS_jsur1(Integer.parseInt((String) paramObj.get("s_jsur1")));
+                dto.setS_box(Integer.parseInt((String) paramObj.get("s_box")));
+                dto.setS_ea(Integer.parseInt((String) paramObj.get("s_ea")));
+                dto.setS_jdan1(Integer.parseInt((String) paramObj.get("s_jdan1")));
+                dto.setS_jdan2(Integer.parseInt((String) paramObj.get("s_jdan2")));
+                dto.setS_money1(Integer.parseInt((String) paramObj.get("s_money1")));
+                dto.setS_money2(Integer.parseInt((String) paramObj.get("s_money2")));
+                dto.setS_money3(Integer.parseInt((String) paramObj.get("s_money3")));
                 dto.setS_jbcode1((String) paramObj.get("s_jbcode1"));
                 mySql2Session.getMapper(Vm71Dao.class).insertVm71(dto);
                 System.out.println("DBINFO2_USE_Start_VM71 _ NO:" + i);
             }
-//            String callBack = request.getParameter("callback");
-//
-//            out = response.getWriter();
-//            out.write(callBack + "({\"ok\" : \"oksuccess\"})");
-//            out.flush();
-//            out.close();
+            String callBack = request.getParameter("callback");
+
+            out = response.getWriter();
+            out.write(callBack + "({\"ok\" : \"oksuccess\"})");
+            out.flush();
+            out.close();
         }
     }
 }
