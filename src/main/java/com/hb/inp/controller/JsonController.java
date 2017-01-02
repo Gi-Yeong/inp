@@ -243,7 +243,7 @@ public class JsonController {
             ObjectMapper mapper = new ObjectMapper();
             System.out.println(request.getParameter("arrayVm70"));
             String jsonArrayVm70 = request.getParameter("arrayVm70");
-            System.out.println(request.getParameter("arrayVm71"));
+            System.out.println(request.getParameter("arrayVm70"));
             String stringInfo70 = " { \"param1\" : " + jsonArrayVm70 + " } ";
             JSONParser jsonParser = new JSONParser();
             JSONObject jsonObject70 = (JSONObject) jsonParser.parse(stringInfo70);
@@ -277,7 +277,7 @@ public class JsonController {
             ObjectMapper mapper = new ObjectMapper();
             System.out.println(request.getParameter("arrayVm70"));
             String jsonArrayVm70 = request.getParameter("arrayVm70");
-            System.out.println(request.getParameter("arrayVm71"));
+            System.out.println(request.getParameter("arrayVm70"));
             String stringInfo70 = " { \"param1\" : " + jsonArrayVm70 + " } ";
             JSONParser jsonParser = new JSONParser();
             JSONObject jsonObject70 = (JSONObject) jsonParser.parse(stringInfo70);
@@ -320,7 +320,6 @@ public class JsonController {
 //
         if (db_info.equals("mysql_one")) {
             ObjectMapper mapper = new ObjectMapper();
-            System.out.println(request.getParameter("arrayVm70"));
             System.out.println(request.getParameter("arrayVm71"));
             String jsonArrayVm71 = request.getParameter("arrayVm71");
             String stringInfo71 = " { \"param2\" : " + jsonArrayVm71 + " } ";
@@ -360,7 +359,6 @@ public class JsonController {
             out.close();
         } else if (db_info.equals("mysql_two")) {
             ObjectMapper mapper = new ObjectMapper();
-            System.out.println(request.getParameter("arrayVm70"));
             System.out.println(request.getParameter("arrayVm71"));
             String jsonArrayVm71 = request.getParameter("arrayVm71");
             String stringInfo71 = " { \"param2\" : " + jsonArrayVm71 + " } ";
